@@ -5,9 +5,8 @@ from dataclasses import dataclass
 import wandb
 
 
-def train_epoch(dataloader, ref_loader, nets: dict, optims: dict, args: dataclass):
+def train_epoch(dataloader, ref_loader, nets: dict, optims: dict, args: dataclass, device):
     step = 0
-    device = nets['generator'].device
     for inputs in tqdm(zip(dataloader, ref_loader)):
         # fetch images and labels
         # WHAT ARE THESE
@@ -52,9 +51,9 @@ def train_epoch(dataloader, ref_loader, nets: dict, optims: dict, args: dataclas
         step += 1
 
 
-def train(dataloader, ref_loader, nets: dict, optims: dict, args: dataclass, num_epochs: int = 10):
+def train(dataloader, ref_loader, nets: dict, optims: dict, args: dataclass, device, num_epochs: int = 10):
 
     wandb.init(project='GAN_HW2_V2')
 
     for i in range(num_epochs):
-        train_epoch(dataloader, ref_loader, nets, optims, args)
+        train_epoch(dataloader, ref_loader, nets, optims, args, device)

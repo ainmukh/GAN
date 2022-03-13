@@ -66,4 +66,4 @@ optims = {
 
 args = Arguments
 
-train(dataloader, ref_loader, nets, optims, args, num_epochs=10)
+train(dataloader, ref_loader, nets, optims, args, device, num_epochs=10)
