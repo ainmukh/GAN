@@ -6,7 +6,7 @@ import numpy as np
 
 
 class Generator(nn.Module):
-    def __init__(self, img_size=64, style_dim=64, max_conv_dim=512, w_hpf=1):
+    def __init__(self, img_size=64, style_dim=64, max_conv_dim=512, w_hpf=0):
         super().__init__()
         # BEGIN SOLUTION
         dim_in = 2**14 // img_size
