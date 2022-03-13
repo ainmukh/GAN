@@ -52,7 +52,7 @@ def compute_d_loss(nets, args, x_real, y_org, y_trg, z_trg=None, x_ref=None):
     assert (z_trg is None) != (x_ref is None)
     # with real images
     x_real.requires_grad_()
-    out = nets['generator'](x_real, y_org)
+    out = nets['discriminator'](x_real, y_org)
     loss_real = adv_loss(out, 1)
     loss_reg = r1_reg(out, x_real)
 
