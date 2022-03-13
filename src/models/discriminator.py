@@ -32,7 +32,7 @@ class Discriminator(nn.Module):
         out = self.main(x)
         out = out.view(out.size(0), -1)  # (batch, num_domains)
         idx = torch.LongTensor(range(y.size(0))).to(y.device)
-        out = out[idx, y]  # (batch)
+        out = out[idx, y.to(torch.int64)]  # (batch)
         return out
         ### END SOLUTION
 
