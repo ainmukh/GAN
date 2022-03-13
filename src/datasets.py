@@ -18,7 +18,7 @@ class CelebaCustomDatasetRef_V2(CelebADataset):
 
         image2, target2 = None, 1 - new_target
         while target2 != new_target:
-            idx_ = np.random.randint(len(super()))
+            idx_ = np.random.randint(super().__len__())
             image2, target2 = super().__getitem__(idx_)
             target2 = target2['attributes'] == 1
             target2 = target2[20]
