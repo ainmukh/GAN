@@ -15,8 +15,8 @@ def train_epoch(dataloader, ref_loader, nets: dict, optims: dict, args: dataclas
         x_ref, x_ref2, y_trg = ref
         x_real, y_org = x_real.to(device), y_org.to(device)
         x_ref, x_ref2, y_trg = x_ref.to(device), x_ref2.to(device), y_trg.to(device)
-        z_trg = torch.randn(x_real.size(0), args.latent_dim)
-        z_trg2 = torch.randn(x_real.size(0), args.latent_dim)
+        z_trg = torch.randn(x_real.size(0), args.latent_dim).to(device)
+        z_trg2 = torch.randn(x_real.size(0), args.latent_dim).to(device)
 
         # train the discriminator
         d_loss, d_losses_latent = compute_d_loss(nets, args, x_real, y_org, y_trg, z_trg=z_trg)
