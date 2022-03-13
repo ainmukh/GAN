@@ -14,7 +14,7 @@ class CelebaCustomDatasetRef_V2(CelebADataset):
     def __getitem__(self, idx):
         image, target = super().__getitem__(idx)
         target = target['attributes'] == 1
-        new_target = target[20].astype(int)
+        new_target = target[20].to(int)
 
         image2, target2 = None, 1 - new_target
         while target2 != new_target:
