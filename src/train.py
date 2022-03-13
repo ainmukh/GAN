@@ -10,7 +10,9 @@ def train_epoch(dataloader, ref_loader, nets: dict, optims: dict, args: dataclas
     for inputs in tqdm(zip(dataloader, ref_loader)):
         # fetch images and labels
         # WHAT ARE THESE
-        x_real, y_org, x_ref, x_ref2, y_trg = inputs
+        real, ref = inputs
+        x_real, y_org = real
+        x_ref, x_ref2, y_trg = ref
         z_trg = torch.randn(x_real.size(0), args.latent_dim)
         z_trg2 = torch.randn(x_real.size(0), args.latent_dim)
 
