@@ -7,12 +7,15 @@ import wandb
 
 def train_epoch(dataloader, ref_loader, nets: dict, optims: dict, args: dataclass):
     step = 0
+    device = nets['generator'].device
     for inputs in tqdm(zip(dataloader, ref_loader)):
         # fetch images and labels
         # WHAT ARE THESE
         real, ref = inputs
         x_real, y_org = real
         x_ref, x_ref2, y_trg = ref
+        x_real, y_org = x_real.to(device), y_org.to(device)
+        x_ref, x_ref2, y_trg = x_ref.to(device), x_ref2.to(device), y_trg.to(device)
         z_trg = torch.randn(x_real.size(0), args.latent_dim)
         z_trg2 = torch.randn(x_real.size(0), args.latent_dim)
 
