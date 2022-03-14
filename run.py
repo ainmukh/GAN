@@ -27,14 +27,14 @@ dataset = CelebaCustomDataset_V2(
     attr_file_path='list_attr_celeba.txt',
     crop=False
 )
-dataloader = torch.utils.data.DataLoader(dataset, batch_size=8, drop_last=True)
+dataloader = torch.utils.data.DataLoader(dataset, batch_size=16, drop_last=True)
 
 ref_dataset = CelebaCustomDatasetRef_V2(
     transform=transform,
     attr_file_path='list_attr_celeba.txt',
     crop=False
 )
-ref_loader = torch.utils.data.DataLoader(ref_dataset, batch_size=8, drop_last=True)
+ref_loader = torch.utils.data.DataLoader(ref_dataset, batch_size=16, drop_last=True)
 
 
 # GET MODELS
