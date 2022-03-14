@@ -7,7 +7,7 @@ import wandb
 
 def train_epoch(dataloader, ref_loader, nets: dict, optims: dict, args: dataclass, device):
     step = 0
-    for inputs in tqdm(zip(dataloader, ref_loader)):
+    for inputs in tqdm(zip(dataloader, ref_loader), total=len(dataloader)):
         # fetch images and labels
         # WHAT ARE THESE
         real, ref = inputs
