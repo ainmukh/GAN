@@ -1,6 +1,6 @@
 import torch
 from src.losses import compute_g_loss, compute_d_loss
-from tqdm.auto import tqdm
+from tqdm import tqdm
 from dataclasses import dataclass
 import wandb
 
@@ -57,6 +57,6 @@ def train(dataloader, ref_loader, nets: dict, optims: dict, args: dataclass, dev
 
     for i in range(num_epochs):
         train_epoch(dataloader, ref_loader, nets, optims, args, device)
-        path = 'drive/MyDrive/'
+        path = ''
         for k, v in nets.items():
             torch.save(v.state_dict(), path + f'{k}.pth')
